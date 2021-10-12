@@ -1,3 +1,5 @@
+let loaderWrapper = document.querySelector(".loader-wrapper");
+
 document.addEventListener( 'DOMContentLoaded', function () {
     var main = new Splide( '.splide', {
       type       : 'fade',
@@ -35,7 +37,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
     thumbnails.mount();
   } );
 
-  let apiKey = "2b0f1e93168e7f090b4956334fcedbdd"
+  let apiKey = "2b0f1e93168e7f090b4956334fcedbdd";
+  let apiKey2 = "k_2pfeso55";
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((location)=>{
 let lat = location.coords.latitude;
@@ -54,6 +57,8 @@ let temp = detail.currently.temperature;
 let location = detail.timezone;
 
 temp = Math.floor((temp - 32) * 5/9);
+
+
 
 console.log(temp,location);
 let userLocation = document.querySelector(".user-location")
@@ -120,6 +125,55 @@ else {
     newMoviesContainer.innerHTML = `${newMoviesFromStorage}` 
    }
 
+let searchContainer = document.querySelector(".search-container")
+   let searchBtn = document.querySelector(".search")
+let closeBtn = document.querySelector(".fa-times");
+
+   document.addEventListener("keyup", function (e) {
+    if (e.code === "Enter" && searchBtn === document.activeElement) {
+      console.log("enter is working");
+      searchContainer.style.display = "block";
+      let searchValue = searchBtn.value;
+
+      let searchMovieApi = `https://imdb-api.com/en/API/SearchMovie/${apiKey2}/${searchValue}`;
+      fetch(searchMovieApi).then((data)=>{
+      return data.json();
+      }).then((res)=>{
+
+        let loader = document.querySelector(".lds-spinner");
+
+        loader.style.display = "none";
+        loaderWrapper.style.height = 0;
+
+        console.log(res);
+        let searchTitle = res.expression;
+        let searchResult = res.results;
+      let returnedResults = searchResult.map((r)=>{
+          return `<div class="search-content-results">
+          <div class="search-content-results-image">
+              <img src=${r.image} />
+          </div>
+          <div class="search-content-results-info">
+              <h3>${searchTitle}</h3>
+              <p>jfhdskfhdskjhfdsk</p>
+            
+             
+          </div>
+      </div>`
+        })
+        let searchContent = document.querySelector(".search-content");
+        searchContent.innerHTML = `${returnedResults}`
+      
+      })
+    }
+    
+  });
 
 
+  closeBtn.addEventListener("click",function () {
+    searchContainer.style.display = "none";
+    searchContent.innerHTML = "";
+    let loader = document.querySelector(".lds-spinner");
 
+  loader.style.display = "inline-block"
+  })
