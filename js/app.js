@@ -1,5 +1,20 @@
 let loaderWrapper = document.querySelector(".loader-wrapper");
+let searchContent = document.querySelector(".search-content");
 
+
+function viewTrailer(event) {
+      let id = event.target.id
+  console.log("view trailer was clicked" + id);
+
+    fetch(`https://imdb-api.com/en/API/YouTubeTrailer/k_2pfeso55/${id}`).then((data)=>{return data.json()}).then((res)=>{
+      console.log(res);
+      let videoId = res.videoId;
+      let trailerDiv = document.querySelector(".trailer"+id)
+      trailerDiv.innerHTML = `<iframe width="300" height="200" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+    })
+
+ } 
 document.addEventListener( 'DOMContentLoaded', function () {
     var main = new Splide( '.splide', {
       type       : 'fade',
@@ -91,7 +106,7 @@ if (localStorage.getItem("comingsoon") == null) {
            <div class="movie-info">
       <h4>title: ${r.fullTitle}</h4>
       <p>genres: ${r.genres}</p>
-      <p>duration: ${r.runtimestr}</p>
+      <p>duration: ${r.runtimeStr}</p>
       <p>release date:${r.releaseState}</p>
       <p>stars: ${r.stars}</p>
       <p>${r.plot}</p>
@@ -113,9 +128,9 @@ else {
    <img class="movie-image" src=${r.image} />
         </div>
         <div class="movie-info">
-   <h4>title: ${r.fullTitle}</h4>
+   <h4>Title: ${r.fullTitle}</h4>
    <p>genres: ${r.genres}</p>
-   <p>duration: ${r.runtimestr}</p>
+   <p>duration: ${r.runtimeStr}</p>
    <p>release date:${r.releaseState}</p>
    <p>stars: ${r.stars}</p>
    <p>${r.plot}</p>
@@ -147,21 +162,30 @@ let closeBtn = document.querySelector(".fa-times");
 
         console.log(res);
         let searchTitle = res.expression;
+      
+        
+      
+      
+
         let searchResult = res.results;
       let returnedResults = searchResult.map((r)=>{
+      let imbdId = r.id
           return `<div class="search-content-results">
           <div class="search-content-results-image">
               <img src=${r.image} />
           </div>
           <div class="search-content-results-info">
               <h3>${searchTitle}</h3>
-              <p>jfhdskfhdskjhfdsk</p>
+              <button id=${imbdId}  onclick=viewTrailer(event) class="viewtrailer">View trailer</button>
+              <div class="trailer${imbdId}"></div>
             
              
           </div>
       </div>`
         })
-        let searchContent = document.querySelector(".search-content");
+
+  
+      
         searchContent.innerHTML = `${returnedResults}`
       
       })
@@ -172,8 +196,9 @@ let closeBtn = document.querySelector(".fa-times");
 
   closeBtn.addEventListener("click",function () {
     searchContainer.style.display = "none";
-    searchContent.innerHTML = "";
+
     let loader = document.querySelector(".lds-spinner");
 
   loader.style.display = "inline-block"
   })
+
