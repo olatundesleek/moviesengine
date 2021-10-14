@@ -15,6 +15,7 @@
 .user-location-temp{color: rgba(255, 255, 255,0.7);}
 .slider-img{width: 100%;height: 600px;}
 .deg{display: none;}
+
 .search-content{display: flex;justify-content: space-around;flex-wrap: wrap;}
 .search-content-results-image img{width: 350px;height: 400px;}
 .search-content-results-image{margin: 20px;}
@@ -164,7 +165,7 @@
     }
   }
   .lightmode{
-      color:#000;
+      color:#000 !important;
       background:#fff
   }
 .splide__slide img {
