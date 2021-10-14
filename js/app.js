@@ -1,6 +1,43 @@
 let loaderWrapper = document.querySelector(".loader-wrapper");
 let searchContent = document.querySelector(".search-content");
+let modeBtn = document.querySelector(".mode");
+let nav = document.querySelector(".nav")
+let pageContainer = document.querySelector(".page-container");
+let icon = document.getElementsByClassName("icon");
+let links = document.getElementsByClassName("link")
+let movieInfo = document.getElementsByClassName("movie-info");
+let searchContainer = document.querySelector(".search-container")
+   let searchBtn = document.querySelector(".search")
+let closeBtn = document.querySelector(".fa-times");
+let userLocation = document.querySelector(".user-location")
+let userLocationtext = document.querySelector(".user-location-temp")
+let deg = document.querySelector(".deg");
+let moonIcon = document.querySelector(".fa-moon")
 
+modeBtn.addEventListener("click",function () {
+
+  for (let index = 0; index < icon.length; index++) {
+   icon[index].classList.toggle("lightmode")
+    
+  }
+  moonIcon.classList.toggle("fa-sun")
+  searchBtn.classList.toggle("lightmode")
+  deg.classList.toggle("lightmode");
+  
+userLocationtext.classList.toggle("lightmode")
+  console.log(icon.length);
+  nav.classList.toggle("lightmode");
+  pageContainer.classList.toggle("lightmode")
+  // icon.classList.toggle("lightmode")
+for (let index = 0; index < links.length; index++) {
+links[index].classList.toggle("lightmode")  
+}
+
+ for (let index = 0; index < movieInfo.length; index++) {
+  movieInfo[index].classList.toggle("lightmode")
+   
+ }
+})
 
 function viewTrailer(event) {
       let id = event.target.id
@@ -76,9 +113,9 @@ temp = Math.floor((temp - 32) * 5/9);
 
 
 console.log(temp,location);
-let userLocation = document.querySelector(".user-location")
+
 let userLocationTemp = document.querySelector(".user-location-temp")
-let deg = document.querySelector(".deg");
+
 loader.style.display = "none";
 userLocation.textContent = location;
 userLocationTemp.textContent = temp;
@@ -140,9 +177,7 @@ else {
     newMoviesContainer.innerHTML = `${newMoviesFromStorage}` 
    }
 
-let searchContainer = document.querySelector(".search-container")
-   let searchBtn = document.querySelector(".search")
-let closeBtn = document.querySelector(".fa-times");
+
 
    document.addEventListener("keyup", function (e) {
     if (e.code === "Enter" && searchBtn === document.activeElement) {
@@ -201,8 +236,5 @@ let closeBtn = document.querySelector(".fa-times");
 
   loader.style.display = "inline-block"
   })
-  // idufiodshfdf
-  // iogyhdsoghodfihgdfghdf
-  // giofdhyogihdfogjdgdgdg
-  // dgiudfhgiodfhjgldjhgdjgl
+
 
