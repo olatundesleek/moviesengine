@@ -238,3 +238,14 @@ else {
   })
 
 
+let hamburgerBtn = document.querySelector(".hamburger");
+let navLi = document.getElementsByClassName("nav-li")
+
+hamburgerBtn.addEventListener("click",()=>{
+
+  for (let index = 0; index < navLi.length; index++) {
+  navLi[index].classList.toggle("display")
+    
+  }
+
+})
