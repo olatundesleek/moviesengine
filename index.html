@@ -29,11 +29,17 @@
 <header class="header">
 <nav class="nav">
     <ul class="main-menu">
-        <li><i class="fas fa-home icon"></i></br><a class="link" href="">Home</a></li>
-        <li><i class="fas fa-fire icon"></i><a class="link" href="">Popular</a></li>
-        <li><i class="fas fa-play icon"></i><a class="link" href="">TvSeries</a></li>
-        <li><i class="fas fa-film icon"></i><a class="link" href="">Movies</a></li>
-        <li class="mode"><i class="fas fa-moon icon"></i>mode</li>
+        <li class="nav-li">
+            <div class="home-btn">
+            <i class="fas fa-home icon"></i></br><a class="link" href="">Home</a>
+        </div>
+        <div class="hamburger">
+        <i class="fas fa-bars icon ham"></i>
+    </div></li>
+        <li class="nav-li"><i class="fas fa-fire icon"></i><a class="link" href="">Popular</a></li>
+        <li class="nav-li"><i class="fas fa-play icon"></i><a class="link" href="">TvSeries</a></li>
+        <li class="nav-li"><i class="fas fa-film icon"></i><a class="link" href="">Movies</a></li>
+        <li class="mode nav-li"><i class="fas fa-moon icon"></i>mode</li>
     </ul>
 </nav>
 <div class="slider">
@@ -50,13 +56,13 @@
       <div id="thumbnail-slider" class="splide">
         <div class="splide__track">
               <ul class="splide__list">
-                  <li class="splide__slide">
+                  <li class="splide__slide thumb">
                       <img src="images/movieposter1.jpg">
                   </li>
-                  <li class="splide__slide">
+                  <li class="splide__slide thumb">
                       <img src="images/movieposter2.jpg">
                   </li>
-                  <li class="splide__slide">
+                  <li class="splide__slide thumb">
                       <img src="images/movieposter3.jpg">
                   </li>
               </ul>
