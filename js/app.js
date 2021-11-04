@@ -180,7 +180,7 @@ else {
 
 
    document.addEventListener("keyup", function (e) {
-    if (e.code === "Enter" && searchBtn === document.activeElement) {
+    if (e.code === "Enter"  && searchBtn === document.activeElement) {
       console.log("enter is working");
       searchContainer.style.display = "block";
       let searchValue = searchBtn.value;
