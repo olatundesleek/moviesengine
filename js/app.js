@@ -13,18 +13,31 @@ let userLocation = document.querySelector(".user-location")
 let userLocationtext = document.querySelector(".user-location-temp")
 let deg = document.querySelector(".deg");
 let moonIcon = document.querySelector(".fa-moon")
-
+let comingSoon = document.querySelector(".coming-soon")
+let weatherDiv = document.querySelector(".weather")
+let loaderDot = document.getElementsByClassName("loader-dot")
 modeBtn.addEventListener("click",function () {
 
   for (let index = 0; index < icon.length; index++) {
    icon[index].classList.toggle("lightmode")
     
   }
+
+  for (let index = 0; index < loaderDot.length; index++) {
+   
+    loaderDot[index].classList.toggle("backchange")
+    
+  }
+
+  console.log(loaderDot);
+  // loaderDot.classList.toggle("backchange")
+  comingSoon.classList.toggle("lightmode")
   moonIcon.classList.toggle("fa-sun")
-  searchBtn.classList.toggle("lightmode")
+  searchBtn.classList.toggle("box-light")
   deg.classList.toggle("lightmode");
-  
-userLocationtext.classList.toggle("lightmode")
+  weatherDiv.classList.toggle("box-light")
+// userLocationtext.classList.toggle("box-light")
+
   console.log(icon.length);
   nav.classList.toggle("lightmode");
   pageContainer.classList.toggle("lightmode")
