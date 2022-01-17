@@ -3,6 +3,10 @@
 .top-bar{display: flex;justify-content: right;margin: 10px 25px;}
 .search{height: 32x;background:rgba(255, 255, 255,0.2);border: unset;border-radius: 5px;width: 220px;margin:0 5px;color:#fff;padding-left: 8px;}
 .weather{display: flex;align-items: center;justify-content: center;text-align: center;width: 150px; height:32px;background:rgba(255, 255, 255,0.2);margin:0 ;border-radius: 5px;color: #fff;}
+.coming-soon{color:#fff;padding:20px 90px}
+.box-light{border: 2px #333 solid;
+  color: #000;}
+  .backchange{background-color: #000 !important;}
 .header{display:flex}
 .nav{background:rgba(255, 255, 255,0.2);border-radius: 10px;}
 .slider{margin: 0 25px;width: 100%;border-radius: 15px;}
